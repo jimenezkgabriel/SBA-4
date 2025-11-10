@@ -1,4 +1,5 @@
 let taskList = [];
+let filteredList = [];
 
 const taskInput = document.getElementById(`task`);
 const taskCategory = document.getElementById(`category`);
@@ -8,6 +9,7 @@ const btnAddTask = document.getElementById(`addTask`);
 const taskTable = document.getElementById(`taskTable`);
 
 const fltCategory = document.getElementById(`filterCategory`);
+const fltStatus = document.getElementById(`filterStatus`);
 
 btnAddTask.addEventListener('click', (e) => {
 
@@ -64,8 +66,19 @@ let renderTable = (list) => {
 }
 
 fltCategory.addEventListener(`input`, (e) => {
-    let filteredList = taskList.filter((n) => {
+    buildFilter();
+})
+
+fltStatus.addEventListener(`change`, (e) => {
+    buildFilter();
+})
+
+let buildFilter = () => {
+    filteredList = taskList.filter((n) => {
+        if (fltStatus.value != ``) {
+            return (n.category.toLowerCase().includes(fltCategory.value.toLowerCase()) && n.currentStatus.includes(fltStatus.value))
+        }
         return n.category.toLowerCase().includes(fltCategory.value.toLowerCase());
     })
     renderTable(filteredList);
-})
+}
