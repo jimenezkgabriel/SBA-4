@@ -36,7 +36,7 @@ btnAddTask.addEventListener('click', (e) => {
 let renderTable = (list) => {
     taskTable.innerHTML = ``;
 
-    for (let task of list) {
+    list.forEach((task, index) => {
         const tr = document.createElement(`tr`);
         for (n in task) {
             let td = document.createElement(`td`);
@@ -53,6 +53,9 @@ let renderTable = (list) => {
                     }
                     drop.appendChild(option);
                 }
+                drop.addEventListener(`change`, (e) => {
+                    list[index].currentStatus = e.target.value;
+                })
                 td.appendChild(drop);
                 tr.appendChild(td);
             }
@@ -62,7 +65,7 @@ let renderTable = (list) => {
             }
         }
         taskTable.appendChild(tr);
-    }
+    })
 }
 
 fltCategory.addEventListener(`input`, (e) => {
