@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./app.js" defer></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container vh-100 align-content-center">
+        <div class="row row-cols-lg-auto g-3 align-items-center">
+            <div class="col-12">
+                <div class="form-floating">
+                    <input id="task" class="form-control" type="text" placeholder="Enter a new task">
+                    <label for="task">Task</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-floating">
+                    <input placeholder="Enter a category" id="category" class="form-control" type="text">
+                    <label for="category">Category</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-floating">
+                    <input type="date" id="deadline" class="form-control" placeholder="Deadline">
+                    <label for="deadline">Deadline</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-floating">
+                    <select id="status" class="form-select">
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                    <label for="status">Status</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button id="addTask" class="btn btn-primary">Add task</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table">
+                    <thead>
+                        <th>Task Name</th>
+                        <th>Category</th>
+                        <th>Deadline</th>
+                        <th>Status</th>
+                    </thead>
+                    <tbody id="taskTable">
+                        <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>Otto</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>Otto</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
