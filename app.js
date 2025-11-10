@@ -24,6 +24,14 @@ btnAddTask.addEventListener('click', (e) => {
         task.deadline = new Date().toLocaleDateString();
     }
 
+    let dateToday = new Date();
+    dateToday.setUTCHours(0,0,0);
+
+    if (Date.parse(task.deadline) < dateToday)
+    {
+        task.currentStatus = `Overdue`;
+    }
+
     taskList.push(task);
     console.log(taskList);
     renderTable(taskList);
