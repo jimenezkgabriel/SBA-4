@@ -8,3 +8,5 @@
     Lots of Google, MDN, and W3CSchools. Oh and Bootstrap documentation.
 3. What you would improve if given more time.
     Maybe update the status of a task within the list to become overdue when the page reloads after the deadline date passes
+
+    In GitHub Pages, might need to refresh a few times before the local storage kicks in
