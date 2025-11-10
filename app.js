@@ -1,32 +1,29 @@
-//const { createElement } = require("react");
-
-let task = {
-    taskName: ``,
-    category: ``,
-    deadline: new Date().toLocaleDateString(),
-    currentStatus: 'Completed'
-}
-
 let taskList = [];
 
 const taskInput = document.getElementById(`task`);
+const taskCategory = document.getElementById(`category`);
+const taskDeadline = document.getElementById(`deadline`);
+const taskStatus = document.getElementById(`status`);
 const btnAddTask = document.getElementById(`addTask`);
 const taskTable = document.getElementById(`taskTable`);
 
 btnAddTask.addEventListener('click', (e) => {
-    let newTask = {
+
+    let task = {
         taskName: taskInput.value,
-        category: ``,
-        deadline: new Date().toLocaleDateString(),
-        currentStatus: ''
+        category: taskCategory.value,
+        deadline: new Date(`${taskDeadline.value}T00:00`).toLocaleDateString(),
+        currentStatus: taskStatus.value
     }
 
-    task.taskName = taskInput.value;
+    if (task.deadline == `Invalid Date`)
+    {
+        task.deadline = new Date().toLocaleDateString();
+    }
+
     taskList.push(task);
     console.log(taskList);
     renderTable();
-
-
 })
 
 let renderTable = () => {
@@ -39,6 +36,7 @@ let renderTable = () => {
             if (n == `currentStatus`) {
                 const roles = [`In Progress`, `Completed`, `Overdue`];
                 const drop = document.createElement(`select`);
+                drop.className = `form-select`;
                 for (let r of roles) {
                     const option = document.createElement(`option`);
                     option.value = r;
