@@ -7,6 +7,8 @@ const taskStatus = document.getElementById(`status`);
 const btnAddTask = document.getElementById(`addTask`);
 const taskTable = document.getElementById(`taskTable`);
 
+const fltCategory = document.getElementById(`filterCategory`);
+
 btnAddTask.addEventListener('click', (e) => {
 
     let task = {
@@ -16,20 +18,23 @@ btnAddTask.addEventListener('click', (e) => {
         currentStatus: taskStatus.value
     }
 
-    if (task.deadline == `Invalid Date`)
-    {
+    if (task.deadline == `Invalid Date`) {
         task.deadline = new Date().toLocaleDateString();
     }
 
     taskList.push(task);
     console.log(taskList);
-    renderTable();
+    renderTable(taskList);
+
+    taskInput.value = ``;
+    taskCategory.value = ``;
+    taskDeadline.value = ``;
 })
 
-let renderTable = () => {
+let renderTable = (list) => {
     taskTable.innerHTML = ``;
 
-    for (let task of taskList) {
+    for (let task of list) {
         const tr = document.createElement(`tr`);
         for (n in task) {
             let td = document.createElement(`td`);
@@ -57,3 +62,10 @@ let renderTable = () => {
         taskTable.appendChild(tr);
     }
 }
+
+fltCategory.addEventListener(`input`, (e) => {
+    let filteredList = taskList.filter((n) => {
+        return n.category.toLowerCase().includes(fltCategory.value.toLowerCase());
+    })
+    renderTable(filteredList);
+})
